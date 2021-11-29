@@ -1,0 +1,6 @@
+ n = int(input("enter the the number you want the table of "))
+  answer = 1
+
+ while answer <= 10:
+    print(n, 'X', answer, "=", n*answer)
+    answer = answer + 1
