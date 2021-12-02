@@ -1,0 +1,9 @@
+# calculate the gravitational force
+
+print("using ths program you can calculate the gravitational force between two objects")
+mass_1 = int(input("please enter the mass of the first object:-  "))
+mass_2 = int(input("please enter the mass of the second object:-  "))
+distance = int(input("please enter the distance between the two object:-  "))
+print("the gravitational force between the two objects is")
+G_Force = 9.8 * mass_1 * mass_2 / distance ** 2
+print(G_Force, "n",)
