@@ -1,0 +1,26 @@
+# polynomials for square and cube
+
+
+a = int(input("enter number variable a :- "))
+b = int(input("enter number variable b :- "))
+num = int(input("""( please enter 2 for square formulas or 3 for cubes formulas )
+please enter 2 or 3 :- """))
+print("please enter the value 0 for x if you don't want to use (x+a)(x+b) formula only and also for cube formulas")
+x = int(input("enter number variable x :- "))
+if num == 2:
+    if x == 0:
+        if a or b == -a or -b:
+            formula = a**2 - 2*a*b + b**2
+            print(formula)
+        else:
+            formula = a**2 + 2*a*b + b**2
+            print(formula)
+    else:
+        formula = x**2 + (a+b)*x + a*b
+else:
+    if a or b == -a or -b:
+        formula = a**3 - b**3 - 3*a*b * (a-b)
+        print(formula)
+    else:
+        formula = a**3 + b**3 + 3*a*b * (a+b)
+        print(formula)
