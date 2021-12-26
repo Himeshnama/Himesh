@@ -7,20 +7,20 @@ num = int(input("""( please enter 2 for square formulas or 3 for cubes formulas 
 please enter 2 or 3 :- """))
 print("please enter the value 0 for x if you don't want to use (x+a)(x+b) formula only and also for cube formulas")
 x = int(input("enter number variable x :- "))
-if num == 2:
-    if x == 0:
-        if a or b == -a or -b:
+if num == 2:                                             # this statement is whether if the program should go for formulas containtin square or cube 
+    if x == 0:                                           # this is wether it should go for (x+a)(x+b) formula or not 
+        if a or b == -a or -b:                           #this is if it is (a-b)^2 or (a+b)^2
             formula = a**2 - 2*a*b + b**2
             print(formula)
-        else:
+        else:                                            
             formula = a**2 + 2*a*b + b**2
             print(formula)
-    else:
+    else:                                                
         formula = x**2 + (a+b)*x + a*b
-else:
-    if a or b == -a or -b:
+else:                                                    # this statement is for cube formulas
+    if a or b == -a or -b:                               # this is if whether it should be (a-d)^3 or (a+d)^3 formula
         formula = a**3 - b**3 - 3*a*b * (a-b)
         print(formula)
-    else:
+    else:                                                
         formula = a**3 + b**3 + 3*a*b * (a+b)
         print(formula)
