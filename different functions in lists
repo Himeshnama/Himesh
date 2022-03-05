@@ -1,0 +1,15 @@
+a) Append b) Extend c) Remove d) Pop e) Sort
+
+
+mylist= [10,30,40,20,60]
+mylist.append(50)
+print("a) apend :- " + str(mylist))
+list = [ 70 ,80 ]
+mylist.extend(list)
+print("b) extend :- " + str(mylist))
+mylist.remove(80)
+print("c) remove :- " + str(mylist))
+mylist.pop(3)
+print("d) pop :- " + str(mylist))
+mylist.sort()
+print("e) sort :- " + str(mylist))
