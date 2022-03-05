@@ -1,0 +1,6 @@
+Python program to concatenate two strings.
+
+strOne = input("Enter the First String: ")
+strTwo = input("Enter the Second String: ")
+strThree = strOne + strTwo
+print("\nConcatenated String: ", strThree)
