@@ -1,0 +1,7 @@
+Python program to display even numbers between 10 and 20.
+
+#start = 10
+#end = 20
+#for num in range(start, end + 1):
+#    if num % 2 == 0:
+#        print(num, end=" ")
