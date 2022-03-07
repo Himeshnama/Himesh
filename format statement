@@ -1,0 +1,9 @@
+greating = 'hi'
+message = 'rajash'
+
+dialoge = greating + ' , ' + message + ' . welcome ! '  # first methord
+dialoge1 = '{} ,{} .welcome !'.format(greating,message) #second methord
+dialoge2 = f'{greating},{message}.welcome ! ', greating ,message #third methord
+print(dialoge)
+print(dialoge1)
+print(dialoge2)
