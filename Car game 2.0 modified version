@@ -1,6 +1,6 @@
 #Car game 2.0 modified version
 
-print('welcome to car game 2.0 in this game the gole is not to crash into anything and survive. \n type "help" to know the functionspresent in the game and type start to start the game \n hope you will have a good time playing this game . \n you may procede in playing the . "thank you"')
+print('welcome to car game 2.0 in this game the gole is not to crash into anything and survive. \n type "help" to know the functionspresent in the game and type start to start the game .\n hope you will have a good time playing this game . \n you may procede in playing the game. "GOOD LUCK"')
 command = ""
 started = False
 left = False
