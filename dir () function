@@ -1,0 +1,3 @@
+varieable = 'hi'
+
+print(dir(varieable)) #it shows all the attribule , function that we can be used on the varieabl
