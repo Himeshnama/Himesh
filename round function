@@ -1,0 +1,10 @@
+num = 10.4
+num1 = 10.5
+num2 = 10.51
+num3 = 10.57
+num4 = 10.8
+print(round(num)    #output 10
+round(num1)         #output 10 
+round(num2)         #output 11    
+round(num3)         #output 11    
+round(num4))        #output 11 
