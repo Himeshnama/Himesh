@@ -1,7 +1,7 @@
 # Car game 2.0 modified version
 
 
-print( 'welcome to car game 2.0 in this game the gole is not to crash into anything and survive. \n type "help" to know the functionspresent in the game and type start to start the game \n hope you will have a good time playing this game . \n you may procede in playing the . "thank you"' )
+print( 'welcome to car game 2.0 in this game the gole is not to crash into anything and survive. \n type "help" to know the functions present in the game and type start to start the game \n hope you will have a good time playing this game . \n you may proceed in playing the GAME . "GOOD LUCK"' )
 command = ""
 started = False
 left = True
@@ -10,6 +10,7 @@ center = False
 boost = False
 over_heated = False
 brake = False
+slow = False
 while True:
     command = input("> ").lower()
     if command == "start":
@@ -29,7 +30,7 @@ while True:
             print("hey! , you\'r car has still not started yet")
             continue
         if left is False:
-            print("sorry you\'r car has crashed and went out of boundery .\n game over")
+            print("sorry you\'r car has crashed and went out of boundary .\n game over")
             break
         elif center is False:
             print("car has turned left.")
@@ -46,7 +47,7 @@ while True:
             print("hey! , you\'r car has still not started yet")
             continue
         if right is False:
-            print("sorry you\'r car has crashed and went out of boundery .\n game over")
+            print("sorry you\'r car has crashed and went out of boundary .\n game over")
             break
         elif center is False:
             print("car has turned right.")
@@ -75,8 +76,13 @@ while True:
         if not started:
             print("hey! , you\'r car has still not started yet")
             continue
-        if brake is True:
+        elif brake is True and slow is False:
             print('you\'r car has already been slowed down! ')
+            slow = True
+        elif brake is True and slow is True:
+            print( "sorry , due to too many brakes you\'r car\'s brakes failed and you crashed into you\'r opponent \n now he is blaming you.\n so the car racing authority claimed him as a winner \n and you \'Lose\' the race")
+            print('better luck next year')
+            break
         else:
             print('you\'r car has slowed down ')
             brake = True
@@ -89,7 +95,7 @@ stop - to stop the car
 left - to turn left
 right - to turn right
 boost - to boost you\'r car
-breaks - to slow down you\'r car
+brake - to slow down you\'r car
 quit - to quit
         """)
     elif command == "quit":
