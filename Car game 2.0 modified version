@@ -1,11 +1,12 @@
-#Car game 2.0 modified version
+# Car game 2.0 modified version
 
-print('welcome to car game 2.0 in this game the gole is not to crash into anything and survive. \n type "help" to know the functionspresent in the game and type start to start the game .\n hope you will have a good time playing this game . \n you may procede in playing the game. "GOOD LUCK"')
+
+print( 'welcome to car game 2.0 in this game the gole is not to crash into anything and survive. \n type "help" to know the functionspresent in the game and type start to start the game \n hope you will have a good time playing this game . \n you may procede in playing the . "thank you"' )
 command = ""
 started = False
-left = False
-right = False
-center = True
+left = True
+right = True
+center = False
 boost = False
 over_heated = False
 brake = False
@@ -24,47 +25,63 @@ while True:
             started = False
             print("car stopped.")
     elif command == "left":
-        if left == False :
+        if not started:
+            print("hey! , you\'r car has still not started yet")
+            continue
+        if left is False:
             print("sorry you\'r car has crashed and went out of boundery .\n game over")
             break
-        elif center == True:
+        elif center is False:
             print("car has turned left.")
-            right == True
-            left == False
+            right = True
+            left = False
+            center = True
         else:
             print("car has turned left.")
-            right == True
-            left == True
+            right = True
+            left = True
+            center = False
     elif command == "right":
-        if right == False :
+        if not started:
+            print("hey! , you\'r car has still not started yet")
+            continue
+        if right is False:
             print("sorry you\'r car has crashed and went out of boundery .\n game over")
             break
-        elif center == True:
+        elif center is False:
             print("car has turned right.")
-            right == False
-            left == True
+            right = False
+            left = True
+            center = True
         else:
             print("car has turned right.")
-            right == True
-            left == True
-    elif command == boost:
-        if boost == True and over_heated == True:
-            print ('you\'r car engine has over heated and the tires have skidded .\n you have crashed into a unknown object. \n game over')
+            right = True
+            left = True
+            center = False
+    elif command == 'boost':
+        if not started:
+            print("hey! , you\'r car has still not started yet")
+            continue
+        if boost is True and over_heated is True:
+            print('you\'r car engine has over heated and the tires have skidded .\n you have crashed into a unknown object. \n game over' )
             break
-        elif boost == True and over_heated == False:
+        elif boost is True and over_heated is False:
             print('you better slow down or you\'r car will get damaged')
-            over_heated == True
-        elif boost == True and over_heated == True and brake == True:
-            over_heat == False
-            print('you\'r car has been boosted and has aquired 20 % more speed')
+            over_heated = True
         else:
             print('you\'r car has been boosted and has aquired 20 % more speed')
-    elif command == brake:
-        if brake == True:
+            boost = True
+    elif command == 'brake':
+        if not started:
+            print("hey! , you\'r car has still not started yet")
+            continue
+        if brake is True:
             print('you\'r car has already been slowed down! ')
         else:
-            print ('you\'r car has slowed down ')
-            brake == True
+            print('you\'r car has slowed down ')
+            brake = True
+            over_heated = False
+            boost = False
     elif command == "help":
         print("""
 start - to start the car
