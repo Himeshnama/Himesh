@@ -1,7 +1,7 @@
 # Car game 2.0 modified version
 
 
-print( 'welcome to car game 2.0 in this game the gole is not to crash into anything and survive. \n type "help" to know the functions present in the game and type start to start the game \n hope you will have a good time playing this game . \n you may proceed in playing the GAME . "GOOD LUCK"' )
+print( 'welcome to car game 2.0 in this game the goal is not to crash into anything and survive. \n type "help" to know the functions present in the game and type start to start the game \n hope you will have a good time playing this game . \n you may proceed in playing the GAME . "GOOD LUCK"' )
 command = ""
 started = False
 left = True
@@ -70,7 +70,7 @@ while True:
             print('you better slow down or you\'r car will get damaged')
             over_heated = True
         else:
-            print('you\'r car has been boosted and has aquired 20 % more speed')
+            print('you\'r car has been boosted and has acquire 20 % more speed')
             boost = True
     elif command == 'brake':
         if not started:
