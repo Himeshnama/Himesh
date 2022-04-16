@@ -1,0 +1,43 @@
+print("this program will tell you the area of any shape that you give")
+given = input('please type the word "shapes" :- ').lower()
+while given == 'shapes':
+    if given == 'shapes':
+        print("""you can find the area of the shapes given below and after reading please type the letter mentioned 
+beside the shape to find the area of that shape
+square - s
+rectangle - r 
+triangle - t
+circle - c 
+""")
+        break
+    else:
+        print("please try again")
+        break
+
+shape = input("type the given letter of any shape here :-  ")
+
+while True:
+    if shape == 's':
+        side = int(input('please enter the length of the side of the square :- '))
+        area = side * side
+        print(area)
+        break
+    elif shape == 'r':
+        length = int(input('please enter the length of the rectangle :- '))
+        breadth = int(input('please enter the breadth of the rectangle :- '))
+        area = length * breadth
+        print(area)
+        break
+    elif shape == 't':
+        height = int(input('please enter the height of the triangle :- '))
+        base = int(input('please enter the base of the triangle :- '))
+        area = 1/2 * base * height
+        print(area)
+        break
+    elif shape == 'c':
+        radius = int(input('please enter the length of the side of the square :- '))
+        area = 3.14 * radius ** 2
+        print(area)
+        break
+    else:
+        print("please try again")
