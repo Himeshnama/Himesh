@@ -1,0 +1,27 @@
+# calculator
+sym =input("enter a mathematical operation that you wish ")
+num1 = int(input("enter any number "))
+num2 = int(input("enter an number "))
+while True :
+    if sym == '+' :
+        sol = num1 + num2
+        print(sol)
+        break
+    elif sym == '-' :
+        sol = num1 - num2
+        print(sol)
+        break
+    elif sym == '/' :
+        print(num1 / num2)
+        break
+
+    elif sym == 'remainder' :
+        sol = num1 % num2
+        print(sol)
+        break
+    elif sym == '*' or 'x' :
+        sol = num1 * num2
+        print(sol)
+        break
+else :
+    print ('i do not understand')
