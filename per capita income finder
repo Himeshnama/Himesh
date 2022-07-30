@@ -1,0 +1,6 @@
+# per capita income finder
+
+income = int(input("enter the total income of the country :-"))
+population = int(input("enter the total population of the country :- "))
+per_capita = income/population
+print(per_capita)
