@@ -1,0 +1,5 @@
+# square root
+num = int(input('entera number you want to find the square root of :- '))
+root = num ** (1/2)
+print (root)
+#answer comes in float
