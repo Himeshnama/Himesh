@@ -1,0 +1,8 @@
+# range as the condition in if statement
+n = int(input("num "))
+if n in range(1,10):
+    print('hi')
+elif n in range(11,20):
+    print("hellow")
+else:
+    print("nothing")
