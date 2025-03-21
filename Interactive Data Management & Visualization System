@@ -1,0 +1,263 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+import seaborn as sns
+width = 0.35
+# Set seaborn style for prettier plots
+sns.set(style="whitegrid")
+
+
+# Load the CSV data into a DataFrame
+df1 = pd.read_csv("company_data.csv")
+df_old = None # Initialize df_old as None to avoid errors if no updates occur
+print("Original Data:\n", df1)
+
+
+s = "Main Menu"
+while True:
+
+
+    print("""
+    Main Menu
+    1. Display records of top MNCs
+    2. Fetch data    
+    3. Update values    
+    4. Looking for a particular section?
+    5. Want some comparison?
+    6. EXIT""")
+   
+    Ch = int(input("Enter Choice: "))
+    if Ch == 1:    
+        print(df1)
+
+
+    elif Ch == 2:    
+        while True:        
+            print("""
+            Database        
+            1. Top 5 Companies        
+            2. Bottom 5 Companies        
+            3. Specific number of companies from the top        
+            4. Specific number of companies from the bottom        
+            5. Exit""")
+           
+            Ch2 = int(input("Enter Choice: "))
+            if Ch2 == 1:
+                print(df1.head())        
+            elif Ch2 == 2:            
+                print(df1.tail())        
+            elif Ch2 == 3:            
+                n = int(input("Enter how many companies you want to display from the top: "))            
+                print(df1.head(n))        
+            elif Ch2 == 4:            
+                n = int(input("Enter how many companies you want to display from the bottom: "))            
+                print(df1.tail(n))        
+            elif Ch2 == 5:            
+                break
+
+
+    elif Ch == 3:    
+        while True:        
+            print("""
+            Working on Data Menu    
+
+
+            1. Insert a new column        
+            2. Delete a specific column
+            3. Update a column's data
+            4. Update a row's data
+            5. Update specific cell data
+            6. Insert a new row
+            7. Delete a specific row
+            8. Exit""")          
+
+
+            Ch3 = int(input("Enter Choice Number: "))        
+            if Ch3 == 1:            
+                print("Enter details")            
+                h = input("Enter column name: ")            
+                det = eval(input("Enter details corresponding to all companies (enclosed in []): "))            
+                df1[h] = pd.Series(data=det, index=df1.index)            
+                print(df1)            
+                print("Column inserted")        
+       
+            elif Ch3 == 2:            
+                a = input("Enter column name which needs to be deleted: ")            
+                df1.drop([a], axis=1, inplace=True)            
+                print(df1)            
+                print("Column deleted")
+       
+            elif Ch3 == 3:            
+                col = input("Enter column name you want to update: ")
+                if col in df1.columns:
+                    df_old = df1.copy() # Store the original DataFrame before updating
+                    updated_values = eval(input("Enter new values (enclosed in []): "))
+                    df1[col] = pd.Series(data=updated_values, index=df1.index)
+                    print("Column updated. New Data:\n", df1)
+                else:
+                    print("Column not found.")
+       
+            elif Ch3 == 4:
+                idx = int(input("Enter the index of the row you want to update: "))
+                if idx in df1.index:
+                    df_old = df1.copy() # Store the original DataFrame before updating
+                    updated_row = eval(input("Enter new values for the row (enclosed in []): "))
+                    df1.loc[idx] = pd.Series(data=updated_row, index=df1.columns)
+                    print("Row updated. New Data:\n", df1)
+                else:
+                    print("Row index not found.")
+       
+            elif Ch3 == 5:
+                idx = int(input("Enter the index of the row you want to update: "))
+                col = input("Enter column name you want to update: ")
+                if idx in df1.index and col in df1.columns:
+                    df_old = df1.copy() # Store the original DataFrame before updating
+                    new_value = eval(input(f"Enter new value for {col} in row {idx}: "))
+                    df1.at[idx, col] = new_value
+                    print("Cell updated. New Data:\n", df1)
+                else:
+                    print("Row index or column not found.")
+                   
+            elif Ch3 == 6:
+                print("Enter the new row values in the order of columns: ", df1.columns.tolist())
+                print("net worth should be in float value")
+                new_row_values = eval(input("Enter the values (enclosed in []): "))
+                if len(new_row_values) == len(df1.columns):
+                    df1.loc[len(df1)] = new_row_values
+                    print("New row added. Updated Data:\n", df1)
+                else:
+                    print("The number of values provided does not match the number of columns.")
+               
+            elif Ch3 == 7:
+                row_idx = int(input("Enter the index of the row you want to delete: "))
+                if row_idx in df1.index:
+                    df1.drop(index=row_idx, inplace=True)
+                    print(f"Row {row_idx} deleted. Updated Data:\n", df1)
+                else:
+                    print("Row index not found.")
+       
+            elif Ch3 == 8:            
+                break
+ 
+
+
+    elif Ch == 4:    
+        while True:        
+            print("""
+            Search Menu
+            1. Search for details of a specific company
+            2. Search details for a specific column
+            3. Exit""")
+           
+            Ch4 = int(input("Enter Choice Number: "))        
+            if Ch4 == 1:            
+                st = int(input("Enter index number of the company whose details you want to see: "))            
+                print(df1.loc[st])        
+            elif Ch4 == 2:            
+                col = input("Enter column whose details you want to see: ")            
+                print(df1[col])
+            elif Ch4 == 3:            
+                break
+
+
+    elif Ch == 5:    
+        while True:        
+            print("""
+            Data Visualization Menu
+
+
+            1. Line plot for Employee Comparison
+            2. Vertical Bar Plot For Net Worth Comparison
+            3. Horizontal Bar Plot For Global Position Comparison
+            4. Line Plot for Comparison with Newly Added Column
+            5. Exit""")          
+           
+            Ch5 = int(input("Enter Choice Number: "))        
+            if Ch5 == 1:                          
+                Comp = df1['Company Name']            
+                Emp = df1['Employee Number']
+
+
+                plt.figure(figsize=(10, 6)) # Increase figure size
+                plt.plot(Comp, Emp, color='r', marker='o', linestyle='--', label="Employees")
+                plt.title("Number of Employees in Top MNCs", fontsize=16, fontweight='bold')
+                plt.xlabel("Company Name", fontsize=12)
+                plt.ylabel("Employee Number", fontsize=12)
+                plt.xticks(rotation=45, ha='right')
+                plt.grid(True)
+                plt.legend() # Add legend
+                plt.show()
+                break
+
+
+            elif Ch5 == 2:                          
+                Comp = df1['Company Name']              
+                NetWorth = df1['Net Worth (in billion dollars)']
+
+
+                plt.figure(figsize=(12, 6)) # Increase figure size
+               
+                if df_old is not None: # Check if df_old is defined
+                    # Plot old data
+                    plt.bar(Comp, df_old['Net Worth (in billion dollars)'], width=width, label="Original", align='center', alpha=0.7, color='blue')                
+                # Plot updated data with some offset to avoid overlap
+                plt.bar(Comp, df1['Net Worth (in billion dollars)'], width=width, label="Updated", align='edge', alpha=0.7, color='orange')                
+                plt.title("Net Worth Comparison of Top MNCs", fontsize=16, fontweight='bold')
+                plt.xlabel("Company Name", fontsize=12)
+                plt.ylabel("Net Worth (in billion dollars)", fontsize=12)
+                plt.xticks(rotation=45, ha='right')
+                plt.grid(axis='y')
+                plt.legend() # Add legend
+                plt.show()
+                break
+
+
+            elif Ch5 == 3:                          
+                Comp = df1['Company Name']              
+                Gpos = df1['Global Position']            
+
+
+                plt.figure(figsize=(12, 6)) # Increase figure size
+               
+                if df_old is not None: # Check if df_old is defined
+                    # Plot old data
+                    plt.barh(Comp, df_old['Global Position'], height=0.4, label="Original", align='center', alpha=0.7, color='green')
+               
+                # Plot updated data with some offset to avoid overlap
+                plt.barh(Comp, df1['Global Position'], height=0.4, label="Updated", align='edge', alpha=0.7, color='red')
+               
+                plt.title("Global Position Comparison of Top MNCs", fontsize=16, fontweight='bold')
+                plt.xlabel("Global Position", fontsize=12)
+                plt.ylabel("Company Name", fontsize=12)
+                plt.grid(axis='x')
+                plt.legend() # Add legend
+                plt.show()
+                break
+               
+            elif Ch5 == 4:
+                column_name = input("Enter the newly added column name for comparison: ")
+                if column_name in df1.columns:
+                    Comp = df1['Company Name']
+                    NewColData = df1[column_name]
+
+
+                    plt.figure(figsize=(10, 6)) # Increase figure size
+                    plt.plot(Comp, NewColData, color='royalblue', linestyle='-.', marker='o', label=f"{column_name} Comparison")
+                    plt.title(f"Comparison of {column_name} across Companies", fontsize=16, fontweight='bold')
+                    plt.xlabel("Company Name", fontsize=12)
+                    plt.ylabel(column_name, fontsize=12)
+                    plt.xticks(rotation=45, ha='right')
+                    plt.grid(True)
+                    plt.legend() # Add legend
+                    plt.show()
+                else:
+                    print("Column not found.")
+                break
+
+
+            elif Ch5 == 5:            
+                break
+
+
+    elif Ch == 6:    
+        Break
